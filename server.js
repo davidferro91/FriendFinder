@@ -15,6 +15,10 @@ app.use(express.json());
 app.use(require("./app/routing/htmlRoutes"));
 app.use(require("./app/routing/apiRoutes"));
 
+app.get("/assets/images/favicon.ico", function (req, res) {
+    res.sendFile(path.join(__dirname, "/assets/images/favicon.ico"));
+});
+
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
