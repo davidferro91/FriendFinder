@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Homepage | FriendZone</title>
+        <!-- Bootstrap and jQuery -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!-- Chosen -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+        <link rel="icon" href="/assets/images/favicon.ico">
+    </head>
+    <body>
+        <br>
+        <div class="container-fluid">
+            <div class="jumbotron rounded">
+                <div class="row">
+                    <div class="col-6">
+                        <h1><i class="fas fa-user-friends"></i> FriendZone</h1>
+                        <hr>
+                        <h3>Answer a few questions about your personality.</h3>
+                        <h3>Then we'll match you with a friend with the greatest compatibility!</h3>
+                        <button class="btn btn-lg btn-dark"><a href="/survey"><i class="fas fa-scroll"></i> Go to Survey</a></button>
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid rounded" src="https://www.boundless.org/wp-content/uploads/sites/2/article/rel-16-friends-romance.jpg" alt="Friends Stock Photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <div class="container-fluid">
+                <p>
+                    <a href="/api/friends">Friend List API</a> | <a target="_blank" href="https://github.com/davidferro91/FriendFinder">GitHub Repo</a>
+                </p>
+            </div>
+        </footer>
+        <style>
+            body {
+                background-color: #008080;
+            }
+
+            hr {
+                border-color: whitesmoke;
+            }
+
+            .jumbotron {
+                background-color: #00b3b3;
+                color: whitesmoke;
+                box-shadow: 5px 5px 10px #000000;
+            }
+
+            a, a:hover, p {
+                text-decoration: none;
+                color: whitesmoke;
+            }
+
+            img, button {
+                max-width: 500px;
+                box-shadow: 3px 3px 15px #000000;
+            }
+
+            .question-input, option, select, .form-group {
+                color: black;
+                text-decoration-color: black;
+            }
+
+            h1 {
+                color: whitesmoke;
+                text-shadow: 5px 5px 10px #000000;
+            }
+
+            h3, h5 {
+                color: whitesmoke;
+                text-shadow: 2px 2px 10px #000000;
+            }
+        </style>
+    </body>
+</html>

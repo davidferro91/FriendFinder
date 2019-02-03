@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="UTF-8">
+        <title>Survey | FriendZone</title>
+        <!-- Bootstrap and jQuery -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <!-- Chosen -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+        <link rel="icon" href="/assets/images/favicon.ico">
+    </head>
+    <body>
+        <br>
+        <div class="container-fluid">
+            <div class="jumbotron rounded">
+                <div class="row">
+                    <div class="col-6">
+                        <h1><i class="fas fa-user-friends"></i> FriendZone Survey Questions</h1>
+                        <hr>
+                        <h3>About You</h3>
+                        <h5>Name (Required)</h5>
+                        <input type="text" id="name" class="form-control" required="">
+                        <br>
+                        <h5>Link to Photo Image (Required)</h5>
+                        <input type="text" id="photo" class="form-control" required="">
+                    </div>
+                    <div class="col-6">
+                        <img class="img-fluid rounded" src="https://www.boundless.org/wp-content/uploads/sites/2/article/rel-16-friends-romance.jpg" alt="Friends Stock Photo">
+                    </div>
+                </div>
+                <hr>
+                <form class="row">
+                    <div class="col-12" id="question-box"></div>
+                    <button type="submit" class="btn btn-lg btn-dark mx-auto col-3" id="submit"><i class="fas fa-check-circle"></i> Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container-fluid">
+                <p>
+                    <a href="/api/friends">Friend List API</a> | <a target="_blank" href="https://github.com/davidferro91/FriendFinder">GitHub Repo</a>
+                </p>
+            </div>
+        </footer>
+
+        <!-- Modal -->
+        <div class="modal fade" id="results-modal" tabindex="-1" role="dialog" aria-labelledby="results-modal-title" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="results-modal-title">Ideal Friend</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4 id="match-name"></h4>
+                        <hr>
+                        <img class="img-fluid rounded" id="match-img" alt="Ideal Match Image" src="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+            body {
+                    background-color: #008080;
+            }
+
+            hr {
+                border-color: whitesmoke;
+            }
+
+            .jumbotron {
+                background-color: #00b3b3;
+                color: whitesmoke;
+                box-shadow: 5px 5px 10px #000000;
+            }
+
+            a, a:hover, p {
+                text-decoration: none;
+                color: whitesmoke;
+            }
+  
+            img, button {
+                max-width: 500px;
+                box-shadow: 3px 3px 15px #000000;
+            }
+    
+            .question-input, option, select, .form-group {
+                color: black;
+                text-decoration-color: black;
+            }
+    
+            h1 {
+                color: whitesmoke;
+                text-shadow: 5px 5px 10px #000000;
+            }
+   
+            h3, h5 {
+                color: whitesmoke;
+                text-shadow: 2px 2px 10px #000000;
+            }
+        </style>
+
+        <script type="text/javascript">
+            var questions = ["Do you value justice higher than mercy?", "Do you rapidly get involved in the social life of a new workplace?", "Do you think that the more people with whom you can speak, the better?", "Do you tend to rely on your experience rather than on theoretical alternatives?", "As a rule, do you proceed only when you have a clear and detailed plan?", "Do you easily empathize with the concerns of other people?", "Do you often prefer to read a book than go to a party?", "When with a group of people, do you enjoy being directly involved and being at the centre of attention?", "Are you are more inclined to experiment than to follow familiar approaches?", "Are you strongly touched by the stories about people's troubles?"];
+            var questionIds = ["q1", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "q9", "q10"];
+            for (var i = 0; i < questions.length; i++) {
+                var formGroup = $("<div>");
+                formGroup.addClass("form-group");
+                var questionLabel = $("<label>");
+                questionLabel.attr("for", "question-input");
+                var questionH = $("<h3>");
+                questionH.text("Question " + (i+1));
+                questionLabel.append(questionH);
+                formGroup.append(questionLabel);
+                var questionText = $("<h5>");
+                questionText.text(questions[i]);
+                formGroup.append(questionText);
+                var questionSelect = $("<select>");
+                questionSelect.attr("type", "text");
+                questionSelect.addClass("question-input chosen-select");
+                questionSelect.attr("id", questionIds[i]);
+                formGroup.append(questionSelect);
+                $("#question-box").append(formGroup);
+                $("#question-box").append("<hr>");
+            }
+            var options = ["", "5 (Strongly Agree)", "4", "3", "2", "1 (Strongly Disagree)"];
+            var optionValues = ["", 5, 4, 3, 2, 1];
+            for (i = 0; i < options.length; i++) {
+                let opt = $("<option>");
+                opt.text(options[i]);
+                opt.attr("value", optionValues[i]);
+                $(".question-input").append(opt);
+            }
+            
+            $(".question-input").chosen();
+
+            $("#submit").on("click", function(event) {
+                event.preventDefault();
+
+                function validateForm () {
+                    var isValid = true;
+                    $(".form-control").each(function () {
+                        if ($(this).val() === "") {
+                            isValid = false;
+                        }
+                    });
+
+                    $(".chosen-select").each(function () {
+                        if ($(this).val() === "") {
+                            isValid = false;
+                        }
+                    });
+                    return isValid;
+                }
+
+                if (validateForm()) {
+                    var userData = {
+                        name: $("#name").val(),
+                        photo: $("#photo").val(),
+                        scores: [
+                            $("#q1").val(),
+                            $("#q2").val(),
+                            $("#q3").val(),
+                            $("#q4").val(),
+                            $("#q5").val(),
+                            $("#q6").val(),
+                            $("#q7").val(),
+                            $("#q8").val(),
+                            $("#q9").val(),
+                            $("#q10").val()
+                        ]
+                    };
+
+                    $.post("/api/friends", userData, function(data) {
+                        $("#match-name").text(data.name);
+                        $("#match-img").attr("src", data.photo);
+
+                        $("#results-modal").modal("toggle");
+                    });
+                } else {
+                    alert("You must fill out all fields before submitting.");
+                }
+            });
+        </script>
+
+    </body>
+</html>
