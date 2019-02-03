@@ -1,0 +1,38 @@
+body {
+    background-color: #008080;
+}
+
+hr {
+    border-color: whitesmoke;
+}
+
+.jumbotron {
+    background-color: #00b3b3;
+    color: whitesmoke;
+    box-shadow: 5px 5px 10px #000000;
+}
+
+a, a:hover, p {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+img, button {
+    max-width: 500px;
+    box-shadow: 3px 3px 15px #000000;
+}
+
+.question-input, option, select, .form-group {
+    color: black;
+    text-decoration-color: black;
+}
+
+h1 {
+    color: whitesmoke;
+    text-shadow: 5px 5px 10px #000000;
+}
+
+h3, h5 {
+    color: whitesmoke;
+    text-shadow: 2px 2px 10px #000000;
+}
