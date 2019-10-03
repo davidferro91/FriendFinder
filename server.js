@@ -19,6 +19,10 @@ app.get("/assets/images/favicon.ico", function (req, res) {
     res.sendFile(path.join(__dirname, "/assets/images/favicon.ico"));
 });
 
+app.get("/assets/images/Friends.png", function (req, res) {
+    res.sendFile(path.join(__dirname, "assets/images/Friends.png"));
+});
+
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
